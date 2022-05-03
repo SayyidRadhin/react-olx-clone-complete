@@ -2,7 +2,7 @@ import React, {useState,useContext} from 'react';
 import {useHistory} from 'react-router-dom';
 
 import Logo from '../../olx-logo.png';
-import {FirebaseContext} from '../../store/FirebaseContext';
+import {FirebaseContext} from '../../store/Context';
 import './Signup.css';
 
 export default function Signup() {
@@ -80,11 +80,13 @@ export default function Signup() {
           />
           <br />
           <br />
-          <button>Signup</button>
+          <button >Signup</button>
+          
+          
         </form>
         <a onClick={()=>{
-           history.push("/login")
-        }}>Login</a>
+          history.push("/login")
+        }}>login</a>
       </div>
     </div>
   );
