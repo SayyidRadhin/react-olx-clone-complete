@@ -22,7 +22,7 @@ export default function Signup() {
           phone:phone
         }).then(()=>{
           history.push("/login")
-        }) 
+        })
       })
     })
   }
