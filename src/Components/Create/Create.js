@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import './Create.css';
 import Header from '../Header/Header';
+import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { FirebaseContext,AuthContext } from '../../store/Context';
 import { useContext } from 'react';
@@ -11,8 +12,9 @@ const Create = () => {
   const [name, setName] = useState('')
   const [category, setCategory] = useState('')
   const [price, setPrice] = useState('')
-  const [image, setImage] = useState(null)
-
+  const [image, setImage] = useState(null)  
+  const history = useHistory()
+  const date = new Date()
   const handleSubmit = ()=>{
 
     firebase.storage().ref(`/image/${image.name}`).put(image).then(({ref})=>{
@@ -22,10 +24,11 @@ const Create = () => {
           name,
           category,
           price,
-          url,
-          userId:user,
-          
+          url,  
+          userId:user.uid,
+          createdAt:date.toDateString()
         })
+        history.push('/')
       })
     })
   }
