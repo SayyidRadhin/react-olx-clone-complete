@@ -7,8 +7,8 @@ import { useHistory } from 'react-router-dom';
 function Posts() {
   const history = useHistory()
 const {firebase} = useContext(FirebaseContext)
-const [products, setProducts] = useState([])
-const {setPostDetails} = useContext{PostContext}
+const [products,setProducts] = useState([])
+const {setPostDetails} = useContext(PostContext)
 useEffect(() => {
   firebase.firestore().collection('products').get().then((snapshot)=>{
     const allPost= snapshot.docs.map((product)=>{
